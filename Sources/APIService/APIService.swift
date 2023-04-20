@@ -1,8 +1,6 @@
 import Foundation
 
 public final class APIService  {
-    static let shared = APIService()
-    
     public init() { }
     
     enum APIServiceError: Error {
