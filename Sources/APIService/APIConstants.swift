@@ -7,11 +7,11 @@
 
 import Foundation
 
-public class APIConstants {    
+public final class APIConstants {    
     public var baseURL: String
     public var apiKey: String
     
-    init(
+    public init(
         baseURL: String,
         apiKey: String
     ) {

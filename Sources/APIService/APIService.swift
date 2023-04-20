@@ -1,6 +1,6 @@
 import Foundation
 
-public class APIService  {
+public final class APIService  {
     static let shared = APIService()
     
     private init() { }
