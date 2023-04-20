@@ -3,7 +3,7 @@ import Foundation
 public final class APIService  {
     static let shared = APIService()
     
-    private init() { }
+    public init() { }
     
     enum APIServiceError: Error {
         case failedToCreateRequest
