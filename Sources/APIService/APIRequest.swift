@@ -25,7 +25,7 @@ public final class APIRequest {
             }
         }
         
-        string += "?apiKey=\(constants.apiKey)"
+        string += "?apiKey=\(constants.apiKey)&"
         
         if !queryParameters.isEmpty {
             let argumentString = queryParameters.compactMap({
