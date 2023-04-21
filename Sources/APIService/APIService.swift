@@ -47,11 +47,32 @@ public final class APIService  {
             
             do {
                 let model = try JSONDecoder().decode(type.self, from: data)
-                print("MODEL: \(model)")
                 completion(.success(model))
             } catch {
                 completion(.failure(error))
             }
+        }
+        
+        task.resume()
+    }
+    
+    public func execute(
+        _ request: APIRequest,
+        completion: @escaping (Result<String, Error>) -> Void
+    ) {
+        guard let urlRequest = self.request(from: request) else {
+            completion(.failure(APIServiceError.failedToCreateRequest))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data,
+                  error == nil else {
+                completion(.failure(error ?? APIServiceError.failedToGetData))
+                return
+            }
+            
+            completion(.success(String(data: data, encoding: .utf8) ?? ""))
         }
         
         task.resume()
