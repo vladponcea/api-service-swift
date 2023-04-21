@@ -25,14 +25,13 @@ public final class APIRequest {
             }
         }
         
+        string += "?apiKey=\(constants.apiKey)"
+        
         if !queryParameters.isEmpty {
-            string += "?"
-            
             let argumentString = queryParameters.compactMap({
                 guard let value = $0.value else { return nil }
                 return "\($0.name)=\(value)"
             }).joined(separator: "&")
-            
             string += argumentString
         }
         
